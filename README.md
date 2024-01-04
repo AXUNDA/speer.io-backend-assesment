@@ -1,4 +1,4 @@
-# Demo credit
+# speers assesment
 
 This is a simple Node.js and Express.js demo application that allows users to login,signup ,as well as create,edit ,delete and share notes with other users
 
