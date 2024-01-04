@@ -85,10 +85,14 @@ class noteService {
 			const notesSharedWithMe = await this.Share.find({
 				sharedWith: user,
 			}).populate('note');
+			console.log(notesSharedWithMe);
 
-			const filtered = notesSharedWithMe.map((note: any) => {
-				if (note.title.includes(query) || note.description.includes(query)) {
-					return note;
+			const filtered = notesSharedWithMe.map((item: any) => {
+				if (
+					(item.note.title && item.note.title.includes(query)) ||
+					(item.note.description && item.note.description.includes(query))
+				) {
+					return item;
 				}
 			});
 			return {
@@ -96,6 +100,7 @@ class noteService {
 				sharedWithMe: filtered,
 			};
 		} catch (error: any) {
+			console.log(error);
 			throw new CustomError(error.message, 500);
 		}
 	}
