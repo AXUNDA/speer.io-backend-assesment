@@ -12,7 +12,7 @@ export default function checkToken(
 		if (!token) return res.sendStatus(401); // Unauthorized
 		jwt.verify(
 			token,
-			process.env.jwt_key as string,
+			process.env.JWT_KEY as string,
 			async (err: any, payload: any) => {
 				if (err) {
 					return res.sendStatus(403); // forbidden
